@@ -1,0 +1,145 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage{fullVpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\textheight=11in
+\pagestyle{empty}
+\raggedright
+\usepackage[left=0.8in,right=0.8in,bottom=0.8in,top=0.8in]{geometry}
+\usepackage{lato}
+\renewcommand{\rmdefault}{lmr}
+\input{glyphtounicode}
+
+\def\bull{\vrule height 0.8ex width .7ex depth -.1ex }
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+%\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\area} [2] {
+    \vspace*{-9pt}
+    \begin{verse}
+        \textbf{#1}   #2
+    \end{verse}
+}
+
+\newcommand{\lineunder} {
+    \vspace*{-8pt} \\
+    \hspace*{-18pt} \hrulefill \\
+}
+
+\newcommand{\header} [1] {
+    {\hspace*{-18pt}\vspace*{6pt} \textsc{#1}}
+    \vspace*{-6pt} \lineunder
+}
+
+\newcommand{\employer} [3] {
+    { \textbf{#1} (#2)\\ \underline{\textbf{\emph{#3}}}\\  }
+}
+
+\newcommand{\contact} [3] {
+    \vspace*{-10pt}
+    \begin{center}
+        {\Huge \scshape {#1}}\\
+        #2 \\ #3
+    \end{center}
+    \vspace*{-8pt}
+}
+
+\newenvironment{achievements}{
+    \begin{list}
+        {$\bullet$}{\topsep 0pt \itemsep -2pt}}{\vspace*{4pt}
+    \end{list}
+}
+
+\newcommand{\schoolwithcourses} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+    \vspace*{5pt}
+}
+
+\newcommand{\school} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+}
+% END RESUME DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{document}
+\vspace*{-40pt}
+
+    
+
+%==== Profile ====%
+\vspace*{-10pt}
+\begin{center}
+	{\Huge \scshape {Dylan Petzko}}\\
+	Mount Laurel, NJ $\cdot$ petzkod@gmail.com $\cdot$ https://www.linkedin.com/in/dylan-petzko/\\
+\end{center}
+
+%==== Education ====%
+\header{Education}
+\textbf{Rowan University}\hfill Glassboro, NJ\\
+BA Computing and Informatics \textit{GPA: 3.8} \hfill Aug 2016 - Dec 2020\\
+\vspace{2mm}
+\textbf{Rowan University}\hfill Glassboro, NJ\\
+BA Emergency Management and Homeland Security \textit{GPA: 4} \hfill Aug 2016 - Dec 2020\\
+\vspace{2mm}
+
+%==== Experience ====%
+\header{Work Experience}
+\vspace{1mm}
+
+\textbf{Lockheed Martin} \hfill Mount Laurel, NJ\\
+\textit{Combat System Engineer} \hfill Aug 22\textquotesingle{} - Present\\
+\vspace{-1mm}
+\begin{itemize} \itemsep 1pt
+	\item Developed and maintained proprietary testing frameworks and test harnesses to automate complex acceptance testing for a mission-critical system, primarily using Python, Java, and Jenkins.
+	\item Collaborated closely with program leadership to drive development priorities and improve product reliability, ensuring adherence to quality standards in functionality and performance.
+	\item Designed and developed data analysis tools using Python to support engineering workflows, working with proprietary data formats to streamline data interaction and analysis.
+	\item Architected a solution that reduced data processing times from over 10 minutes to under one minute, significantly enhancing workflow efficiency and supporting quick decision-making.
+\end{itemize}
+\textbf{Stilog I.S.T} \hfill NY, NY\\
+\textit{Project Implementation Consultant} \hfill Jan 21\textquotesingle{} - Aug 22\textquotesingle{}\\
+\vspace{-2mm}
+\begin{itemize} \itemsep 0pt
+	\item Collaborated directly with clients to design and implement tailored asset management solutions using Java, HTML, and CSS, aligning software functionality with each client\textquotesingle{}s specific operational needs and goals.
+	\item Developed comprehensive business requirement documentation to translate customer needs into actionable design specifications, ensuring successful delivery of custom software products that enhanced client productivity and asset oversight.
+\end{itemize}
+\textbf{Miles Technologies} \hfill Lumberton, NJ\\
+\textit{IT Support Consultant} \hfill Apr 20\textquotesingle{} - Dec 21\textquotesingle{}\\
+\vspace{-2mm}
+\begin{itemize} \itemsep 0pt
+	\item Delivered high-quality support to over 99 customers daily, achieving a 95\% satisfaction rating throughout my time at the company. Ensured rapid and effective issue resolution, often through onsite visits, to maintain client productivity and satisfaction.
+	\item Supported medical clients with HIPAA-compliant solutions, leveraging deep knowledge of healthcare IT requirements to provide secure, efficient support and uphold stringent data protection standards.
+\end{itemize}
+
+\header{Skills}
+\begin{tabular}{ l l }
+	Programming Languages:            & Python, Bash, Java, Groovy, Go                                     \\
+	Automation \& Testing Frameworks: & GitLab, Jenkins, Ansible, RobotFramework                           \\
+	Version and Source Control:       & Atlassian, Bitbucket, Gitlab, Git                                  \\
+	Database Management:              & mySQL, MariaDB                                                     \\
+   Software Development:             & Agile, Scrum, Test-Driven Development, Behavior-Driven Development \\
+\end{tabular}
+\vspace{2mm}
+
+\header{Projects}
+{\textbf{Lockheed Martin AWS Data Analysis Tool}} {\sl Python, Gitlab, Pandas / NumPy} \\
+Architected and developed an internal data analysis tool in Python for handling proprietary data formats, automating data processing tasks, and enabling engineers to interact with data more efficiently.\\
+\vspace*{2mm}
+
+
+
+\ 
+\end{document}
