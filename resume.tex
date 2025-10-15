@@ -1,144 +1,214 @@
-\documentclass[letterpaper,11pt]{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{textcomp}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\textheight=11in
-\pagestyle{empty}
-\raggedright
-\usepackage[left=0.8in,right=0.8in,bottom=0.8in,top=0.8in]{geometry}
-\usepackage{lato}
-\renewcommand{\rmdefault}{lmr}
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
 \input{glyphtounicode}
 
-\def\bull{\vrule height 0.8ex width .7ex depth -.1ex }
+\setlength{\footskip}{5pt}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-% Adjust margins
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
-%\addtolength{\topmargin}{-.5in}
+\addtolength{\topmargin}{-.5in}
 \addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
-% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\area} [2] {
-    \vspace*{-9pt}
-    \begin{verse}
-        \textbf{#1}   #2
-    \end{verse}
+%== begin commands ==%
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
 }
 
-\newcommand{\lineunder} {
-    \vspace*{-8pt} \\
-    \hspace*{-18pt} \hrulefill \\
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\header} [1] {
-    {\hspace*{-18pt}\vspace*{6pt} \textsc{#1}}
-    \vspace*{-6pt} \lineunder
+\newcommand{\resumeSubheadingShort}[2]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\employer} [3] {
-    { \textbf{#1} (#2)\\ \underline{\textbf{\emph{#3}}}\\  }
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\contact} [3] {
-    \vspace*{-10pt}
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%== end commands ==%
+
+
+%== begin document ==%
+\begin{document}
+
     \begin{center}
-        {\Huge \scshape {#1}}\\
-        #2 \\ #3
+        \textbf{\Huge Dylan Petzko} \\ \vspace{1pt}
+            \href{mailto:petzkod@gmail.com}{\underline{petzkod@gmail.com}} $|$
+            \href{https://linkedin.com/in/dylan-petzko}{\underline{linkedin/dylan-petzko}} $|$
+            \href{https://github.com/petzkod5}{\underline{github/petzkod5}}\\
+        \vspace{6pt}
     \end{center}
-    \vspace*{-8pt}
-}
 
-\newenvironment{achievements}{
-    \begin{list}
-        {$\bullet$}{\topsep 0pt \itemsep -2pt}}{\vspace*{4pt}
-    \end{list}
-}
-
-\newcommand{\schoolwithcourses} [4] {
-    \textbf{#1} #2 $\bullet$ #3\\
-    #4 \\
-    \vspace*{5pt}
-}
-
-\newcommand{\school} [4] {
-    \textbf{#1} #2 $\bullet$ #3\\
-    #4 \\
-}
-% END RESUME DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%
-
-    \begin{document}
-\vspace*{-40pt}
-
-    
-
-%==== Profile ====%
-\vspace*{-10pt}
-\begin{center}
-	{\Huge \scshape {Dylan Petzko}}\\
-	Mount Laurel, NJ $\cdot$ petzkod@gmail.com $\cdot$ https://www.linkedin.com/in/dylan-petzko/\\
-\end{center}
-
-%==== Education ====%
-\header{Education}
-\textbf{Rowan University}\hfill Glassboro, NJ\\
-BA Computing and Informatics \textit{GPA: 3.8} \hfill Aug 2016 - Dec 2020\\
-\vspace{2mm}
-\textbf{Rowan University}\hfill Glassboro, NJ\\
-BA Emergency Management and Homeland Security \textit{GPA: 4} \hfill Aug 2016 - Dec 2020\\
-\vspace{2mm}
-
-%==== Experience ====%
-\header{Work Experience}
-\vspace{1mm}
-
-\textbf{Lockheed Martin} \hfill Mount Laurel, NJ\\
-\textit{Combat System Engineer} \hfill Aug 22\textquotesingle{} - Present\\
-\vspace{-1mm}
-\begin{itemize} \itemsep 1pt
-	\item Developed and maintained proprietary testing frameworks and test harnesses to automate complex acceptance testing for a mission-critical system, primarily using Python, Java, and Jenkins.
-	\item Collaborated closely with program leadership to drive development priorities and improve product reliability, ensuring adherence to quality standards in functionality and performance.
-	\item Designed and developed data analysis tools using Python to support engineering workflows, working with proprietary data formats to streamline data interaction and analysis.
-	\item Architected a solution that reduced data processing times from over 10 minutes to under one minute, significantly enhancing workflow efficiency and supporting quick decision-making.
-\end{itemize}
-\textbf{Stilog I.S.T} \hfill NY, NY\\
-\textit{Project Implementation Consultant} \hfill Jan 21\textquotesingle{} - Aug 22\textquotesingle{}\\
-\vspace{-2mm}
-\begin{itemize} \itemsep 0pt
-	\item Collaborated directly with clients to design and implement tailored asset management solutions using Java, HTML, and CSS, aligning software functionality with each client\textquotesingle{}s specific operational needs and goals.
-	\item Developed comprehensive business requirement documentation to translate customer needs into actionable design specifications, ensuring successful delivery of custom software products that enhanced client productivity and asset oversight.
-\end{itemize}
-\textbf{Miles Technologies} \hfill Lumberton, NJ\\
-\textit{IT Support Consultant} \hfill Apr 20\textquotesingle{} - Dec 21\textquotesingle{}\\
-\vspace{-2mm}
-\begin{itemize} \itemsep 0pt
-	\item Delivered high-quality support to over 99 customers daily, achieving a 95\% satisfaction rating throughout my time at the company. Ensured rapid and effective issue resolution, often through onsite visits, to maintain client productivity and satisfaction.
-	\item Supported medical clients with HIPAA-compliant solutions, leveraging deep knowledge of healthcare IT requirements to provide secure, efficient support and uphold stringent data protection standards.
-\end{itemize}
-
-\header{Skills}
-\begin{tabular}{ l l }
-	Programming Languages:            & Python, Bash, Java, Groovy, Go                                     \\
-	Automation \& Testing Frameworks: & GitLab, Jenkins, Ansible, RobotFramework                           \\
-	Version and Source Control:       & Atlassian, Bitbucket, Gitlab, Git                                  \\
-	Database Management:              & mySQL, MariaDB                                                     \\
-   Software Development:             & Agile, Scrum, Test-Driven Development, Behavior-Driven Development \\
-\end{tabular}
-\vspace{2mm}
-
-\header{Projects}
-{\textbf{Lockheed Martin AWS Data Analysis Tool}} {\sl Python, Gitlab, Pandas / NumPy} \\
-Architected and developed an internal data analysis tool in Python for handling proprietary data formats, automating data processing tasks, and enabling engineers to interact with data more efficiently.\\
-\vspace*{2mm}
+    \section{Education}
+        \resumeSubHeadingListStart
+            \resumeSubheading
+                {Rowan University}{Glassboro, NJ}
+                {Bachelor Computing and Informatics, Minor CyberSecurity}{2016 - 2020}
+            \resumeSubheading
+                {Rowan University}{Glassboro, NJ}
+                {Bachelor Emergency Management and Homeland Security, Minor Counter-Terrorism}{2016-2020}
+        \resumeSubHeadingListEnd
 
 
+    \section{Work Experience}
+        \resumeSubHeadingListStart
+            \resumeSubheadingShort
+                {Lockheed Martin, RMS $|$ Mount Laurel, NJ}{Aug 2022 - Current}
 
-\ 
+                \resumeSubSubheading{Software Engineer $|$ Test Automation}{Oct 2023 - Current}
+                    \resumeItemListStart
+                        \resumeItem{
+                            Developed and maintained proprietary automated testing framework for end-to-end regression 
+                            testing of mission-critical systems using Python, Jenkins, and Gitlab CI/CD. Utilization of this testing
+                            framework has estimated cost-savings in development time of over \$500,000 a year.
+                        }
+                        \resumeItem{
+                            Collaborated closely with customer program leadership to drive development priorities and improve
+                            product reliability. Created quality and expectation documentation for functional and performance metrics.
+                        }
+                        \resumeItem{
+                            Architected and developed automated testing tools in Python, which helped save \$200,000
+                            in development costs year-over-year
+                        }
+                    \resumeItemListEnd
+
+                \resumeSubSubheading{Software Engineer $|$ DevSecOps}{February 2023 - Current}
+                    \resumeItemListStart
+                        \resumeItem{
+                            Developed inner-source data-analysis python library for proprietary data formats, reducing
+                            data-analysis time for users by 75\% and saving over \$750,000 in labor costs per year.
+                        }
+                        \resumeItem{
+                            Created End-To-End CI/CD deployment pipelines using Docker, Vagrant, Splunk, Ansible, and GitLab
+                        }
+                        \resumeItem{
+                            Coordinated efforts between functional products to develop automated deployment tool for container,
+                            virtual, and baremetal deployments with estimated cost savings of \$1,000,000 year-over-year.
+                        }
+                    \resumeItemListEnd
+
+                \resumeSubSubheading{Systems Engineer $|$ Integration And Test}{Aug 2022 - Oct 2023}
+                    \resumeItemListStart
+                        \resumeItem{
+                            Worked on-site with foreign military customers to troubleshoot and update software builds.
+                        }
+                        \resumeItem{
+                            Coordinate, Develop, and execute detailed test procedures for software products.
+                        }
+                        \resumeItem{
+                            Developed post-test data analysis tool for automated reporting utilizing Python, Matlab and Tableau.
+                        }
+                        \resumeItem{
+                            Developed new, and modified existing software requirement documentation utilizing Jazz and DOORS.
+                        }
+                    \resumeItemListEnd
+            
+            \resumeSubheadingShort
+                {Stilog I.S.T $|$ NY, NY}{Jan 2021 - Aug 2022}
+                \resumeItemListStart
+                    \resumeItem{Collaborated with customers to deliver tailored and custom software solutions based on proprietary software framework.}
+                    \resumeItem{Utilized Java, HTML, and CSS to meet customer expectations and demands.}
+                    \resumeItem{Created comprehensive business requirement documentation to translate customer needs into actionable designable plans.}
+                    \resumeItem{Maintained deployment of customer products using Azure and AWS.}
+                \resumeItemListEnd
+            
+            
+    \section{Projects}
+        \resumeSubHeadingListStart
+            \resumeProjectHeading
+                {\href{https://petzko.online}{\emph{petzko.online $|$ Personal Website $|$ Python, DockerCompose, NixOS}}}{March 2020 - Dec 2024}
+                \resumeItemListStart
+                    \resumeItem{
+                        Developed personal portfolio website hosted on personal hardware targetting self-healing and high-availability
+                    }
+                    \resumeItem{
+                        Containerized using Dockerfiles and Docker Compose best practices
+                    }
+                    \resumeItem{
+                        Deployed Splunk and Grafana to monitor docker nodes and to fire alerts when certain conditions are met.
+                    }
+                    \resumeItem{
+                        Setup Nginx ingress / egress Routing rules for docker-compose containers
+                    }
+                \resumeItemListEnd
+        \resumeSubHeadingListEnd
+
+
+    \section{Skills}
+
+        \begin{itemize}[leftmargin=0.15in, label={}]
+            \small{\item{
+                \textbf{Programming Languages}{: Python, Bash, Go, Groovy/Java, Rust, C++, SQL}\\
+                \textbf{OS Platforms}{: UNIX (Solaris 8,9,10), RHEL (6,7,8,9), Ubuntu, Linux 5/6}\\
+                \textbf{CI Tools}{: Jenkins/Hudson, GitLab}\\
+                \textbf{Configuration Management}{: Ansible, Nix, Nginx, Chef, Puppet, ANT, Maven, Make}\\
+                \textbf{Provisioning Tools}{: Terraform, Azure Resource Manager (ARM), Kubernetes, Docker, MiniKube}\\
+                \textbf{Virtualization}{: VMWare, Vagrant, KVM}
+            }}
+        \end{itemize}
+                
+
+        \resumeSubHeadingListEnd
 \end{document}
+%== end document ==%
