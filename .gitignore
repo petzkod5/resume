@@ -168,3 +168,10 @@ cython_debug/
 *.log
 *.pdf
 *.gz
+
+# rendered files
+resume*.pdf
+
+#node stuff
+node_modules/
+dist/

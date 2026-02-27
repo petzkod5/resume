@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dylan Petzko — Resume</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* ============================================
+     THEME VARIABLES
+     To export PDF: set <body class="light"> or
+     <body class="dark"> then run WeasyPrint.
+     ============================================ */
+
+            body.light {
+                --accent: #1e3a5f;
+                --ink: #1a1a1a;
+                --ink-mid: #3d3d3d;
+                --ink-soft: #777;
+                --rule: #c4bdb4;
+                --bg: #faf9f7;
+                --divider: #ede9e3;
+                --print-bg: white;
+            }
+
+            body.dark {
+                --accent: #7eafd4;
+                --ink: #e8e6e1;
+                --ink-mid: #b0aba3;
+                --ink-soft: #6b6760;
+                --rule: #3a3835;
+                --bg: #161514;
+                --divider: #2a2826;
+                --print-bg: #161514;
+            }
+
+            /* ============================================
+     TOGGLE BUTTON (screen only, hidden on print)
+     ============================================ */
+
+            #theme-toggle {
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 999;
+                background: var(--accent);
+                color: var(--bg);
+                border: none;
+                border-radius: 2rem;
+                padding: 0.4rem 1rem;
+                font-family: "DM Sans", sans-serif;
+                font-size: 0.75rem;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+                cursor: pointer;
+                transition: opacity 0.2s;
+            }
+
+            #theme-toggle:hover {
+                opacity: 0.8;
+            }
+
+            @media print {
+                #theme-toggle {
+                    display: none;
+                }
+            }
+
+            /* ============================================
+     BASE STYLES
+     ============================================ */
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: "DM Sans", sans-serif;
+                font-weight: 300;
+                font-size: 8.6pt;
+                line-height: 1.42;
+                color: var(--ink-mid);
+                background: var(--bg);
+                width: 8.5in;
+                min-height: 11in;
+                margin: 0 auto;
+                padding: 0.55in 0.65in 0.5in;
+                transition:
+                    background 0.25s,
+                    color 0.25s;
+            }
+
+            /* ── Header ── */
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-bottom: 0.22in;
+                padding-bottom: 0.1in;
+                border-bottom: 2px solid var(--accent);
+            }
+
+            header h1 {
+                font-family: "EB Garamond", serif;
+                font-size: 26pt;
+                font-weight: 600;
+                color: var(--accent);
+                letter-spacing: -0.01em;
+                line-height: 1;
+            }
+
+            .contact {
+                text-align: right;
+                font-size: 7.8pt;
+                color: var(--ink-soft);
+                line-height: 1.7;
+            }
+
+            .contact a {
+                color: var(--ink-soft);
+                text-decoration: none;
+            }
+            .contact a:hover {
+                color: var(--accent);
+            }
+
+            /* ── Sections ── */
+            section {
+                margin-bottom: 0.13in;
+            }
+
+            h2 {
+                font-family: "EB Garamond", serif;
+                font-size: 7.5pt;
+                font-weight: 600;
+                color: var(--accent);
+                text-transform: uppercase;
+                letter-spacing: 0.16em;
+                border-bottom: 1px solid var(--accent);
+                padding-bottom: 2px;
+                margin-bottom: 0.07in;
+            }
+
+            /* ── Summary ── */
+            .summary p {
+                font-size: 8.4pt;
+                color: var(--ink-mid);
+                line-height: 1.48;
+            }
+
+            /* ── Experience ── */
+            .employer {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-bottom: 0.03in;
+            }
+
+            .employer-name {
+                font-size: 9pt;
+                font-weight: 600;
+                color: var(--ink);
+            }
+
+            .employer-date {
+                font-size: 7.5pt;
+                color: var(--ink-soft);
+                white-space: nowrap;
+            }
+
+            .role {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-top: 0.05in;
+                margin-bottom: 0.02in;
+            }
+
+            .role-title {
+                font-size: 8.2pt;
+                font-weight: 500;
+                color: var(--ink);
+            }
+
+            .role-note {
+                font-size: 7pt;
+                color: var(--ink-soft);
+                font-style: italic;
+                margin-left: 0.08in;
+            }
+
+            .role-date {
+                font-size: 7.5pt;
+                color: var(--ink-soft);
+                white-space: nowrap;
+            }
+
+            ul {
+                list-style: none;
+                margin: 0 0 0.04in 0.12in;
+            }
+
+            ul li {
+                position: relative;
+                padding-left: 0.13in;
+                margin-bottom: 0.025in;
+                font-size: 8pt;
+                line-height: 1.4;
+                color: var(--ink-mid);
+            }
+
+            ul li::before {
+                content: "–";
+                position: absolute;
+                left: 0;
+                color: var(--rule);
+            }
+
+            .employer-block {
+                margin-bottom: 0.1in;
+            }
+            .employer-block:last-child {
+                margin-bottom: 0;
+            }
+
+            /* ── Skills ── */
+            .section-skills {
+                page-break-before: always;
+                break-before: page;
+            }
+
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.025in 0.3in;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .skill-row {
+                display: flex;
+                gap: 0.06in;
+                font-size: 7.9pt;
+                line-height: 1.4;
+                border-bottom: 1px solid var(--divider);
+                padding: 0.025in 0;
+            }
+
+            .skill-row:last-child {
+                border-bottom: none;
+            }
+
+            .skill-label {
+                font-weight: 500;
+                color: var(--ink);
+                white-space: nowrap;
+                min-width: 1.35in;
+                flex-shrink: 0;
+            }
+
+            .skill-value {
+                color: var(--ink-mid);
+            }
+
+            /* ── Education ── */
+            .edu-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                padding: 0.03in 0;
+                border-bottom: 1px solid var(--divider);
+                font-size: 8pt;
+            }
+
+            .edu-row:last-child {
+                border-bottom: none;
+            }
+
+            .edu-school {
+                font-weight: 500;
+                color: var(--ink);
+                margin-right: 0.08in;
+                white-space: nowrap;
+            }
+
+            .edu-degree {
+                color: var(--ink-mid);
+                flex: 1;
+            }
+
+            .edu-date {
+                color: var(--ink-soft);
+                font-size: 7.5pt;
+                white-space: nowrap;
+                margin-left: 0.1in;
+            }
+
+            /* ── Print ── */
+            @media print {
+                @page {
+                    size: letter;
+                    margin: 0;
+                }
+                body {
+                    margin: 0;
+                    background: var(--print-bg);
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+            }
+        </style>
+    </head>
+
+    <body class="dark">
+        <button id="theme-toggle" onclick="toggleTheme()">
+            Switch to Dark
+        </button>
+
+        <header>
+            <h1>Dylan Petzko</h1>
+            <div class="contact">
+                <a href="mailto:petzkod@gmail.com">petzkod@gmail.com</a><br />
+                <a href="https://linkedin.com/in/dylan-petzko"
+                    >linkedin/dylan-petzko</a
+                ><br />
+                <a href="https://github.com/petzkod5">github/petzkod5</a>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <section class="summary">
+            <h2>Summary</h2>
+            <p>
+                Full Stack and DevSecOps Engineer with 5+ years of experience
+                building mission-critical software for DOD programs at Lockheed
+                Martin. Skilled in scalable web application development, RESTful
+                API design, system integrations, and CI/CD pipelines across
+                cloud and air-gapped environments. Experienced in React-based
+                frontend development, Python/Flask backends, LLM-powered
+                tooling, and AWS infrastructure — with a consistent record of
+                reducing operational burden through automation and
+                well-architected software.
+            </p>
+        </section>
+
+        <!-- Work Experience -->
+        <section>
+            <h2>Work Experience</h2>
+
+            <div class="employer-block">
+                <div class="employer">
+                    <span class="employer-name"
+                        >Lockheed Martin, RMS &mdash; Mount Laurel, NJ</span
+                    >
+                    <span class="employer-date">Aug 2022 – Current</span>
+                </div>
+
+                <div class="role">
+                    <span class="role-title"
+                        >Full Stack Engineer II | Cloud
+                        <span class="role-note">Current Role</span></span
+                    >
+                    <span class="role-date">Dec 2025 – Current</span>
+                </div>
+                <ul>
+                    <li>
+                        Engineered and managed production-grade Kubernetes
+                        clusters using Helm, streamlining deployment of Keycloak
+                        and Kafka across restricted, air-gapped environments.
+                    </li>
+                    <li>
+                        Maintained and extended AWS cloud infrastructure to
+                        support auxiliary services, applying Terraform for
+                        infrastructure-as-code provisioning and configuration
+                        management.
+                    </li>
+                    <li>
+                        Architected monitoring stack using Prometheus, Grafana,
+                        and Loki for real-time visibility and log aggregation
+                        across mission-critical DOD infrastructure.
+                    </li>
+                    <li>
+                        Implemented STIG compliance and navigated security
+                        requirements to ensure all deployments meet the highest
+                        DOD security standards.
+                    </li>
+                </ul>
+
+                <div class="role">
+                    <span class="role-title"
+                        >Software Engineer II | AI Data Analysis
+                        <span class="role-note"
+                            >Concurrent with Cloud</span
+                        ></span
+                    >
+                    <span class="role-date">Dec 2025 – Current</span>
+                </div>
+                <ul>
+                    <li>
+                        Serving as software architect on an AI-assisted
+                        data-analysis platform leveraging large language models
+                        to build agentic workflows that enable engineers to
+                        rapidly discover and process large volumes of data.
+                    </li>
+                    <li>
+                        Designed and developed scalable full-stack web
+                        application using Flask RESTful APIs (backend) and React
+                        with component-based architecture (frontend), with Tauri
+                        providing a native cross-platform interface.
+                    </li>
+                    <li>
+                        Architected system integrations between the LLM agent
+                        layer, data sources, and frontend to enable seamless
+                        data sharing across application boundaries.
+                    </li>
+                    <li>
+                        Containerized application using Docker and authored Helm
+                        charts for deployment as a standalone web service and as
+                        a Kubernetes-native pod.
+                    </li>
+                    <li>
+                        Led requirements gathering, system modeling, and
+                        architectural design documentation for the platform.
+                    </li>
+                </ul>
+
+                <div class="role">
+                    <span class="role-title"
+                        >Software Engineer II | Test Automation
+                        <span class="role-note"
+                            >Concurrent with DevSecOps</span
+                        ></span
+                    >
+                    <span class="role-date">Oct 2023 – Dec 2025</span>
+                </div>
+                <ul>
+                    <li>
+                        Developed and maintained proprietary automated testing
+                        framework for end-to-end regression testing using
+                        Python, Jenkins, and GitLab CI/CD — estimated
+                        cost-savings of over $500,000/year.
+                    </li>
+                    <li>
+                        Collaborated with customer program leadership to drive
+                        development priorities and improve product reliability;
+                        created quality and performance metric documentation.
+                    </li>
+                    <li>
+                        Architected automated testing tools in Python, saving
+                        $200,000 in development costs year-over-year.
+                    </li>
+                </ul>
+
+                <div class="role">
+                    <span class="role-title"
+                        >Software Engineer | DevSecOps
+                        <span class="role-note"
+                            >Concurrent with Test Automation</span
+                        ></span
+                    >
+                    <span class="role-date">Feb 2023 – Dec 2025</span>
+                </div>
+                <ul>
+                    <li>
+                        Built inner-source Python data-analysis library for
+                        proprietary formats, reducing analysis time by 75% and
+                        saving over $750,000 in labor costs per year.
+                    </li>
+                    <li>
+                        Created end-to-end CI/CD pipelines using Docker,
+                        Vagrant, Splunk, Ansible, and GitLab.
+                    </li>
+                    <li>
+                        Developed automated deployment tool for container,
+                        virtual, and baremetal environments with estimated
+                        savings of $1,000,000 year-over-year.
+                    </li>
+                </ul>
+
+                <div class="role">
+                    <span class="role-title"
+                        >Systems Engineer | Integration and Test</span
+                    >
+                    <span class="role-date">Aug 2022 – Oct 2023</span>
+                </div>
+                <ul>
+                    <li>
+                        Worked on-site with foreign military customers to
+                        troubleshoot and update software builds.
+                    </li>
+                    <li>
+                        Coordinated, developed, and executed detailed test
+                        procedures for software products.
+                    </li>
+                    <li>
+                        Built post-test data analysis tool for automated
+                        reporting using Python, Matlab, and Tableau.
+                    </li>
+                    <li>
+                        Developed and modified software requirement
+                        documentation using Jazz and DOORS.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="employer-block">
+                <div class="employer">
+                    <span class="employer-name"
+                        >Stilog I.S.T &mdash; New York, NY</span
+                    >
+                    <span class="employer-date">Jan 2021 – Aug 2022</span>
+                </div>
+                <ul>
+                    <li>
+                        Delivered tailored software solutions for customers
+                        using a proprietary framework; utilized Java, HTML, and
+                        CSS to meet requirements.
+                    </li>
+                    <li>
+                        Created comprehensive business requirement documentation
+                        to translate customer needs into actionable design
+                        plans.
+                    </li>
+                    <li>
+                        Maintained and managed customer product deployments on
+                        AWS and Azure, including infrastructure provisioning and
+                        environment upkeep.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section-skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-row">
+                    <span class="skill-label">Languages</span
+                    ><span class="skill-value"
+                        >Python, Bash, Go, Groovy/Java, Rust, C++, SQL</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">CI Tools</span
+                    ><span class="skill-value"
+                        >Jenkins/Hudson, GitLab, ArgoCD, FluxCD</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">OS Platforms</span
+                    ><span class="skill-value"
+                        >UNIX (Solaris 8/9/10), RHEL (6–9), Ubuntu, NixOS</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Config Management</span
+                    ><span class="skill-value"
+                        >Ansible, Nix, Nginx, Chef, Puppet, Maven, Make</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Provisioning</span
+                    ><span class="skill-value"
+                        >Terraform, AWS, ARM, Kubernetes, Docker, MiniKube</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Monitoring</span
+                    ><span class="skill-value"
+                        >Prometheus, Grafana, Loki, Splunk</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Virtualization</span
+                    ><span class="skill-value">VMWare, Vagrant, KVM</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Messaging &amp; Auth</span
+                    ><span class="skill-value">Kafka, Keycloak</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Web &amp; Native</span
+                    ><span class="skill-value">React, Flask, Tauri</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">AI &amp; ML</span
+                    ><span class="skill-value"
+                        >LLM Integration, Agentic Workflows, AI-assisted Data
+                        Analysis</span
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h2>Education</h2>
+            <div class="edu-row">
+                <span class="edu-school">Rowan University</span>
+                <span class="edu-degree"
+                    >B.S. Computing and Informatics, Minor in
+                    CyberSecurity</span
+                >
+                <span class="edu-date">2016 – 2020</span>
+            </div>
+            <div class="edu-row">
+                <span class="edu-school">Rowan University</span>
+                <span class="edu-degree"
+                    >B.S. Emergency Management and Homeland Security, Minor in
+                    Counter-Terrorism</span
+                >
+                <span class="edu-date">2016 – 2020</span>
+            </div>
+        </section>
+    </body>
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById("theme-toggle");
+            if (body.classList.contains("light")) {
+                body.classList.replace("light", "dark");
+                btn.textContent = "Switch to Light";
+            } else {
+                body.classList.replace("dark", "light");
+                btn.textContent = "Switch to Dark";
+            }
+        }
+    </script>
+</html>

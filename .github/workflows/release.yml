@@ -1,0 +1,58 @@
+name: Create & Release PDFs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: render and release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: install weasyprint and dependencies
+        run: |
+          sudo apt-get update -qq
+           sudo apt-get install -y -qq \
+           libpango-1.0-0 \
+           libpangoft2-1.0-0 \
+           libpangocairo-1.0-0 \
+           libgdk-pixbuf2.0-0 \
+           libffi-dev \
+           shared-mime-info
+          pip install weasyprint
+
+      - name: render light pdf
+        run: |
+          sed 's/class="dark"/class="light"/' resume.html \
+            | weasyprint - dist/resume-light.pdf
+
+      - name: render dark pdf
+        run: |
+          sed 's/class="light"/class="dark"/' resume.html \
+            | weasyprint - dist/resume-dark.pdf
+
+      - name: setup nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: install semantic-release
+        run: npm ci
+
+      - name: run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
