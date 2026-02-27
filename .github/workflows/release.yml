@@ -34,6 +34,9 @@ jobs:
            shared-mime-info
           pip install weasyprint
 
+      - name: create dist directory
+        run: mkdir -pv dist
+
       - name: render light pdf
         run: |
           sed 's/class="dark"/class="light"/' resume.html \
