@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/petzkod5/resume/compare/v1.0.0...v1.1.0) (2026-06-20)
+
+
+### Features
+
+* add Solutions Architect role and tailor resume for defense roles ([d581217](https://github.com/petzkod5/resume/commit/d581217162cc3aa279e92dddfe63a0384f121258))
+
 # 1.0.0 (2026-02-27)
 
 
