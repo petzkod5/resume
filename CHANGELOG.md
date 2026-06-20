@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/petzkod5/resume/compare/v1.2.0...v1.2.1) (2026-06-20)
+
+
+### Bug Fixes
+
+* theme the page footer with the dark/light background ([3efdceb](https://github.com/petzkod5/resume/commit/3efdceb136ef47d73588902865894d0cb786d0a3))
+
 # [1.2.0](https://github.com/petzkod5/resume/compare/v1.1.0...v1.2.0) (2026-06-20)
 
 
