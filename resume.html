@@ -116,6 +116,15 @@
                 line-height: 1;
             }
 
+            .clearance {
+                display: block;
+                margin-top: 0.05in;
+                font-size: 8pt;
+                font-weight: 600;
+                color: var(--accent);
+                letter-spacing: 0.04em;
+            }
+
             .contact {
                 text-align: right;
                 font-size: 7.8pt;
@@ -320,11 +329,16 @@
 
     <body class="dark">
         <button id="theme-toggle" onclick="toggleTheme()">
-            Switch to Dark
+            Switch to Light
         </button>
 
         <header>
-            <h1>Dylan Petzko</h1>
+            <div class="identity">
+                <h1>Dylan Petzko</h1>
+                <span class="clearance"
+                    >Active DoD Secret Clearance &middot; U.S. Citizen</span
+                >
+            </div>
             <div class="contact">
                 <a href="mailto:petzkod@gmail.com">petzkod@gmail.com</a><br />
                 <a href="https://linkedin.com/in/dylan-petzko"
@@ -338,15 +352,15 @@
         <section class="summary">
             <h2>Summary</h2>
             <p>
-                Full Stack and DevSecOps Engineer with 5+ years of experience
-                building mission-critical software for DOD programs at Lockheed
-                Martin. Skilled in scalable web application development, RESTful
-                API design, system integrations, and CI/CD pipelines across
-                cloud and air-gapped environments. Experienced in React-based
-                frontend development, Python/Flask backends, LLM-powered
-                tooling, and AWS infrastructure — with a consistent record of
-                reducing operational burden through automation and
-                well-architected software.
+                Full Stack Engineer and Kubernetes Platform Architect with 5+
+                years building mission-critical software for DOD programs at
+                Lockheed Martin. Architects hybrid cloud-and-edge Kubernetes
+                platforms — service mesh, observability, air-gapped GitOps, and
+                DevSecOps pipelines — and builds the full-stack, API-driven
+                applications and LLM-powered tooling that run on them.
+                Forward-deployed solutions architect and team lead with a record
+                of delivering scalable, reliable, well-architected systems in
+                secure and disconnected environments.
             </p>
         </section>
 
@@ -364,10 +378,61 @@
 
                 <div class="role">
                     <span class="role-title"
-                        >Full Stack Engineer II | Cloud
-                        <span class="role-note">Current Role</span></span
+                        >Solutions Architect | Kubernetes Platform &amp; SRE
+                        <span class="role-note"
+                            >Forward Deployed &middot; Honolulu, HI</span
+                        ></span
                     >
-                    <span class="role-date">Dec 2025 – Current</span>
+                    <span class="role-date">Apr 2026 – Current</span>
+                </div>
+                <ul>
+                    <li>
+                        Architect a hybrid cloud-and-edge Kubernetes platform
+                        spanning 12 production clusters, onboarding 14 teams from
+                        several partner companies and 20+ applications and API
+                        services onto a custom cross-cluster data layer while
+                        enforcing the infrastructure standards and security
+                        guardrails that keep their integrations safe and
+                        consistent.
+                    </li>
+                    <li>
+                        Install, harden, and administer fleet-wide platform
+                        services — Istio, Falco, Harbor, Prometheus, Grafana,
+                        Loki, and Fluent Bit — delivering service mesh, runtime
+                        security, image governance, and observability that
+                        sustains 97.99% average node uptime across the fleet.
+                    </li>
+                    <li>
+                        Designed an air-gapped GitOps architecture around ArgoCD
+                        to enable continuous, auditable delivery within highly
+                        secure, disconnected environments on AWS GovCloud.
+                    </li>
+                    <li>
+                        Lead a team of 4 engineers and, as a forward-deployed
+                        solutions architect at the customer site, serve as the
+                        direct Lockheed Martin technical liaison — rapidly
+                        implementing new infrastructure, tooling, and features on
+                        the ground and coordinating changes back to HQ.
+                    </li>
+                    <li>
+                        Built a Backstage internal developer platform cataloging
+                        hundreds of nodes, applications, and APIs, giving
+                        engineers self-service visibility and golden-path
+                        standards across the platform.
+                    </li>
+                    <li>
+                        Develop full-stack applications (frontend, backend, and
+                        storage) deployable to Kubernetes in both cloud and edge
+                        environments, accelerating delivery and scalability with
+                        LLM- and AI-assisted workflows.
+                    </li>
+                </ul>
+
+                <div class="role">
+                    <span class="role-title"
+                        >Full Stack Engineer II | Cloud</span
+                    >
+                    <span class="role-date">Dec 2025 – Apr 2026</span>
                 </div>
                 <ul>
                     <li>
@@ -382,14 +447,14 @@
                         management.
                     </li>
                     <li>
-                        Architected monitoring stack using Prometheus, Grafana,
-                        and Loki for real-time visibility and log aggregation
-                        across mission-critical DOD infrastructure.
+                        Stood up the initial Prometheus, Grafana, and Loki
+                        monitoring stack on a production cloud cluster,
+                        establishing the real-time visibility and log
+                        aggregation later scaled fleet-wide across the platform.
                     </li>
                     <li>
-                        Implemented STIG compliance and navigated security
-                        requirements to ensure all deployments meet the highest
-                        DOD security standards.
+                        Implemented STIG compliance to meet DOD security
+                        standards across all deployments.
                     </li>
                 </ul>
 
@@ -400,13 +465,13 @@
                             >Concurrent with Cloud</span
                         ></span
                     >
-                    <span class="role-date">Dec 2025 – Current</span>
+                    <span class="role-date">Dec 2025 – Apr 2026</span>
                 </div>
                 <ul>
                     <li>
-                        Serving as software architect on an AI-assisted
+                        Served as software architect on an AI-assisted
                         data-analysis platform leveraging large language models
-                        to build agentic workflows that enable engineers to
+                        to build agentic workflows that enabled engineers to
                         rapidly discover and process large volumes of data.
                     </li>
                     <li>
@@ -442,19 +507,15 @@
                 </div>
                 <ul>
                     <li>
-                        Developed and maintained proprietary automated testing
-                        framework for end-to-end regression testing using
-                        Python, Jenkins, and GitLab CI/CD — estimated
-                        cost-savings of over $500,000/year.
+                        Developed and maintained a proprietary Python automated
+                        testing framework and supporting tools for end-to-end
+                        regression testing (Jenkins, GitLab CI/CD), cutting
+                        development time by an estimated $700,000/year.
                     </li>
                     <li>
                         Collaborated with customer program leadership to drive
                         development priorities and improve product reliability;
                         created quality and performance metric documentation.
-                    </li>
-                    <li>
-                        Architected automated testing tools in Python, saving
-                        $200,000 in development costs year-over-year.
                     </li>
                 </ul>
 
@@ -544,13 +605,20 @@
                 <div class="skill-row">
                     <span class="skill-label">Languages</span
                     ><span class="skill-value"
-                        >Python, Bash, Go, Groovy/Java, Rust, C++, SQL</span
+                        >Python, Go, Rust, C++, Bash, Java/Groovy, SQL</span
                     >
                 </div>
                 <div class="skill-row">
-                    <span class="skill-label">CI Tools</span
+                    <span class="skill-label">Architecture &amp; APIs</span
                     ><span class="skill-value"
-                        >Jenkins/Hudson, GitLab, ArgoCD, FluxCD</span
+                        >Microservices, REST APIs, Distributed Systems, IaC,
+                        Reference Architectures</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">CI / DevSecOps</span
+                    ><span class="skill-value"
+                        >Jenkins/Hudson, GitLab, ArgoCD, FluxCD, STIG</span
                     >
                 </div>
                 <div class="skill-row">
@@ -568,13 +636,20 @@
                 <div class="skill-row">
                     <span class="skill-label">Provisioning</span
                     ><span class="skill-value"
-                        >Terraform, AWS, ARM, Kubernetes, Docker, MiniKube</span
+                        >Terraform, AWS / GovCloud, ARM, Kubernetes, Docker,
+                        MiniKube</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Platform &amp; Mesh</span
+                    ><span class="skill-value"
+                        >Istio, Harbor, Backstage, Falco, GitOps</span
                     >
                 </div>
                 <div class="skill-row">
                     <span class="skill-label">Monitoring</span
                     ><span class="skill-value"
-                        >Prometheus, Grafana, Loki, Splunk</span
+                        >Prometheus, Grafana, Loki, Fluent Bit, Splunk</span
                     >
                 </div>
                 <div class="skill-row">
@@ -592,8 +667,14 @@
                 <div class="skill-row">
                     <span class="skill-label">AI &amp; ML</span
                     ><span class="skill-value"
-                        >LLM Integration, Agentic Workflows, AI-assisted Data
-                        Analysis</span
+                        >LLM Integration, Agentic Workflows, RAG, AI-assisted
+                        Data Analysis</span
+                    >
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Certifications</span
+                    ><span class="skill-value"
+                        >CompTIA Security+ (DoD 8570 IAT II)</span
                     >
                 </div>
             </div>
