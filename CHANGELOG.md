@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/petzkod5/resume/compare/v1.1.0...v1.2.0) (2026-06-20)
+
+
+### Features
+
+* add personal site and versioned per-page footer ([ef63d4e](https://github.com/petzkod5/resume/commit/ef63d4eb830f1c8ca24603ea0e168e8807b20fc6))
+
 # [1.1.0](https://github.com/petzkod5/resume/compare/v1.0.0...v1.1.0) (2026-06-20)
 
 
