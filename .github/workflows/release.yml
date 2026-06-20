@@ -22,6 +22,30 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: setup nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: install node deps
+        run: npm ci
+
+      - name: compute release version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Ask semantic-release what the next version will be (no publish).
+          VERSION=$(npx semantic-release --dry-run 2>&1 \
+            | grep -ioE 'next release version is [0-9]+\.[0-9]+\.[0-9]+' \
+            | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)
+          # Fallback: latest existing tag (no new release this run).
+          if [ -z "$VERSION" ]; then
+            VERSION=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
+          fi
+          [ -z "$VERSION" ] && VERSION="0.0.0"
+          echo "RESUME_VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "Resume version for this build: v$VERSION"
+
       - name: install weasyprint and dependencies
         run: |
           sudo apt-get update -qq
@@ -37,23 +61,24 @@ jobs:
       - name: create dist directory
         run: mkdir -pv dist
 
+      # Inject the footer version + tag link into the render stream only
+      # (resume.html on disk stays unmodified, so semantic-release sees a
+      # clean working tree).
       - name: render light pdf
         run: |
-          sed 's/class="dark"/class="light"/' resume.html \
+          sed -e 's/class="dark"/class="light"/' \
+              -e "s#<span class=\"footer-ver\"></span>#<span class=\"footer-ver\"> v${RESUME_VERSION}</span>#" \
+              -e "s#resume/releases\"#resume/releases/tag/v${RESUME_VERSION}\"#" \
+              resume.html \
             | weasyprint - dist/resume-light.pdf
 
       - name: render dark pdf
         run: |
-          sed 's/class="light"/class="dark"/' resume.html \
+          sed -e 's/class="light"/class="dark"/' \
+              -e "s#<span class=\"footer-ver\"></span>#<span class=\"footer-ver\"> v${RESUME_VERSION}</span>#" \
+              -e "s#resume/releases\"#resume/releases/tag/v${RESUME_VERSION}\"#" \
+              resume.html \
             | weasyprint - dist/resume-dark.pdf
-
-      - name: setup nodejs
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-
-      - name: install semantic-release
-        run: npm ci
 
       - name: run semantic-release
         env:

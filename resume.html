@@ -241,16 +241,13 @@
 
             /* ── Skills ── */
             .section-skills {
-                page-break-before: always;
-                break-before: page;
+                /* flows directly after Experience — no forced page break */
             }
 
             .skills-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.025in 0.3in;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
 
             .skill-row {
@@ -260,6 +257,8 @@
                 line-height: 1.4;
                 border-bottom: 1px solid var(--divider);
                 padding: 0.025in 0;
+                break-inside: avoid;
+                page-break-inside: avoid;
             }
 
             .skill-row:last-child {
@@ -311,11 +310,28 @@
                 margin-left: 0.1in;
             }
 
+            /* ── Page footer (running element, repeats every page) ── */
+            .page-footer {
+                position: running(resumeFooter);
+                text-align: center;
+                font-size: 6.3pt;
+                letter-spacing: 0.05em;
+                color: var(--ink-soft);
+            }
+            .page-footer a {
+                color: var(--ink-soft);
+                text-decoration: none;
+            }
+
             /* ── Print ── */
             @media print {
                 @page {
                     size: letter;
-                    margin: 0;
+                    margin: 0 0 0.32in 0;
+                    @bottom-center {
+                        content: element(resumeFooter);
+                        vertical-align: middle;
+                    }
                 }
                 body {
                     margin: 0;
@@ -328,6 +344,14 @@
     </head>
 
     <body class="dark">
+        <!-- Page footer (running element — must precede content to repeat on
+             every page; version + tag link injected at release time) -->
+        <div class="page-footer">
+            <a href="https://github.com/petzkod5/resume/releases"
+                >Resume<span class="footer-ver"></span> &middot; changelog</a
+            >
+        </div>
+
         <button id="theme-toggle" onclick="toggleTheme()">
             Switch to Light
         </button>
@@ -341,6 +365,7 @@
             </div>
             <div class="contact">
                 <a href="mailto:petzkod@gmail.com">petzkod@gmail.com</a><br />
+                <a href="https://petzko.sh">petzko.sh</a><br />
                 <a href="https://linkedin.com/in/dylan-petzko"
                     >linkedin/dylan-petzko</a
                 ><br />
